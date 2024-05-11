@@ -19,6 +19,8 @@ namespace LKSITSSOLUTION
         public FormLogin()
         {
             InitializeComponent();
+            tbUserName.Text = "Admin";
+            tbPassword.Text = "Admin123";
         }
 
         private void button2_Click(object sender, EventArgs e)

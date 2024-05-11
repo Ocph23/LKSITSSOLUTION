@@ -18,6 +18,8 @@ namespace LKSITSSOLUTION
 
         public BindingList<Employee> dataSource { get; set; } = new BindingList<Employee>();
 
+        private Employee model = new Employee();
+
         public FormEmployee()
         {
             InitializeComponent();
@@ -42,6 +44,7 @@ namespace LKSITSSOLUTION
 
         private void Kosongkan()
         {
+            model = new Employee();
             btnCancel.Enabled = false;
             btnSave.Enabled = false;
             btnInsert.Enabled = true;
@@ -66,10 +69,6 @@ namespace LKSITSSOLUTION
             tbUsername.Text = string.Empty;
             dtDateOfBird.Value = DateTime.Now;
             cmbJob.SelectedItem = null;
-            dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-
-
-
 
         }
 
@@ -112,13 +111,25 @@ namespace LKSITSSOLUTION
             tbUsername.Enabled = true;
             dtDateOfBird.Enabled = true;
             cmbJob.Enabled = true;
+            tbpassword.Enabled = false;
+            tbconfirm.Enabled = false;
 
+            model = dataGridView1.CurrentRow.DataBoundItem as Employee;
+
+            tbaddress.Text = model.Address;
+            dtDateOfBird.Value = model.DateOfBird;
+            tbemail.Text = model.Email;
+            cmbJob.SelectedValue = model.JobId;
+            tbname.Text = model.Name;
+            tbpassword.Text = model.Password;
+            if (!string.IsNullOrEmpty(model.Photo))
+            {
+                pictureBox1.Load(model.Photo);
+            }
+            tbUsername.Text = model.UserName;
         }
 
-        private void updateMode()
-        {
-            throw new NotImplementedException();
-        }
+
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
@@ -134,13 +145,15 @@ namespace LKSITSSOLUTION
             {
                 var connection = MyConnection.GetConnection();
                 connection.Open();
-                var cmd = new SqlCommand("Delete from emloyee where id = @id", connection);
+                var cmd = new SqlCommand("Delete from employee where id = @id", connection);
                 var data = dataGridView1.CurrentRow.DataBoundItem as Employee;
                 cmd.Parameters.Add(new SqlParameter("id", data.Id));
                 var result = cmd.ExecuteNonQuery();
                 if (result > 0)
                 {
                     MessageBox.Show("Data Terhaspus");
+                    dataSource.Remove(data);
+                    dataGridView1.Refresh();
                 }
                 else
                 {
@@ -155,22 +168,40 @@ namespace LKSITSSOLUTION
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            var data = new Employee();
-            data.Name = tbname.Text;
-            data.Email = tbemail.Text;
-            data.Password = tbemail.Text;
-            data.UserName = tbUsername.Text;
-            data.Address = tbaddress.Text;
-            data.DateOfBird = dtDateOfBird.Value;
-            data.Photo = pictureBox1.ImageLocation;
-            data.JobId = (cmbJob.SelectedItem as Job).Id;
+            model.Name = tbname.Text;
+            model.Email = tbemail.Text;
+            model.Password = tbpassword.Text;
+            model.UserName = tbUsername.Text;
+            model.Address = tbaddress.Text;
+            model.DateOfBird = dtDateOfBird.Value;
+            model.Photo = pictureBox1.ImageLocation;
+            model.JobId = (cmbJob.SelectedItem as Job).Id;
+            try
+            {
+                if ( model.Id <= 0)
+                {
+                    var employee = Employee.Insert(model);
+                    if (employee != null)
+                    {
+                        dataSource.Add(employee);
+                        dataGridView1.Refresh();
+                        MessageBox.Show("berhasil !");
+                    }
+                }
+                else
+                {
+                    if (Employee.Update(model))
+                    {
+                        dataGridView1.Refresh();
+                        MessageBox.Show("berhasil !");
+                    }
+                }
 
-
-
-
-
-
-
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
@@ -185,10 +216,19 @@ namespace LKSITSSOLUTION
                 if (openDialog.ShowDialog() == DialogResult.OK)
                 {
                     var filePath = openDialog.FileName;
-                    pictureBox1.Image = Image.FromFile(filePath);
+                    pictureBox1.Load(filePath);
                 }
             }
 
+        }
+
+        private void dataGridView1_SelectionChanged(object sender, EventArgs e)
+        {
+            btnInsert.Enabled = true;
+            btnUpdate.Enabled = true;
+            btnCancel.Enabled = true;
+            btnSave.Enabled = false;
+            btnDelete.Enabled = true;
         }
     }
 }

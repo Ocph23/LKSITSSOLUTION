@@ -55,6 +55,7 @@
             this.cmbJob = new System.Windows.Forms.ComboBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.JobName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.userNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -63,11 +64,10 @@
             this.dateOfBirdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.photoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.employeeBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.employeeBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.employeeBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -315,12 +315,23 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(495, 150);
             this.dataGridView1.TabIndex = 23;
+            this.dataGridView1.SelectionChanged += new System.EventHandler(this.dataGridView1_SelectionChanged);
             // 
             // JobName
             // 
             this.JobName.DataPropertyName = "JobName";
             this.JobName.HeaderText = "Job";
             this.JobName.Name = "JobName";
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::LKSITSSOLUTION.Properties.Resources.il_1140xN_5543409541_fmkc;
+            this.pictureBox1.Location = new System.Drawing.Point(379, 258);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(150, 76);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 24;
+            this.pictureBox1.TabStop = false;
             // 
             // idDataGridViewTextBoxColumn
             // 
@@ -366,17 +377,7 @@
             // 
             // employeeBindingSource
             // 
-            this.employeeBindingSource.DataSource = typeof(LKSITSSOLUTION.Models.Employee);
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::LKSITSSOLUTION.Properties.Resources.il_1140xN_5543409541_fmkc;
-            this.pictureBox1.Location = new System.Drawing.Point(379, 258);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(150, 76);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 24;
-            this.pictureBox1.TabStop = false;
+            this.employeeBindingSource.DataSource = typeof(LKSITSSOLUTION.Models.RoomType);
             // 
             // FormEmployee
             // 
@@ -409,8 +410,8 @@
             this.Load += new System.EventHandler(this.FormEmployee_Load);
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.employeeBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.employeeBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

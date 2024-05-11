@@ -8,10 +8,11 @@
     <OutputType>WinExe</OutputType>
     <RootNamespace>LKSITSSOLUTION</RootNamespace>
     <AssemblyName>LKSITSSOLUTION</AssemblyName>
-    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -77,10 +78,14 @@
       <DependentUpon>FormLogin.cs</DependentUpon>
     </Compile>
     <Compile Include="Models\Employee.cs" />
+    <Compile Include="Models\RoomType.cs" />
     <Compile Include="Models\Job.cs" />
     <Compile Include="MyConnection.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Admins\FormRoomType.resx">
+      <DependentUpon>FormRoomType.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormAdmin.resx">
       <DependentUpon>FormAdmin.cs</DependentUpon>
     </EmbeddedResource>

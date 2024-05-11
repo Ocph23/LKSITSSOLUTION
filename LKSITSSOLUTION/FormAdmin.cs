@@ -1,12 +1,5 @@
 ﻿using LKSITSSOLUTION.Admins;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace LKSITSSOLUTION
@@ -16,6 +9,7 @@ namespace LKSITSSOLUTION
         public FormAdmin()
         {
             InitializeComponent();
+            this.FormClosed += FormAdmin_FormClosed;
         }
 
         private void employeeToolStripMenuItem_Click(object sender, EventArgs e)
@@ -34,6 +28,24 @@ namespace LKSITSSOLUTION
         {
             var form = new FormRoom();
             form.ShowDialog();
+        }
+
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void logoutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+           
+            var formLogin = new FormLogin();
+            formLogin.Show();
+            this.Hide();
+        }
+
+        private void FormAdmin_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            this.Close();
         }
     }
 }

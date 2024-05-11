@@ -22,26 +22,26 @@ namespace LKSITSSOLUTION.Models
         public string JobName { get; set; }
 
         [Obsolete]
-        public static Employee Insert(Employee emp)
+        public static Employee Insert(Employee data)
         {
             try
             {
                 var connection = MyConnection.GetConnection();
-                var command = new SqlCommand("Insert into employee values (@username, @password, @name, @email, @address,@dob,@photo, @jobid) ; select SCOPE_IDENTITY()", connection);
-                command.Parameters.Add("username", emp.UserName);
-                command.Parameters.Add("password", emp.Password);
-                command.Parameters.Add("name", emp.Name);
-                command.Parameters.Add("email", emp.Email);
-                command.Parameters.Add("address", emp.Address);
-                command.Parameters.Add("dob", emp.DateOfBird);
-                command.Parameters.Add("photo", emp.Photo);
-                command.Parameters.Add("jobid", emp.JobId);
+                var command = new SqlCommand("Insert into dataloyee values (@username, @password, @name, @email, @address,@dob,@photo, @jobid) ; select SCOPE_IDENTITY()", connection);
+                command.Parameters.Add("username", data.UserName);
+                command.Parameters.Add("password", data.Password);
+                command.Parameters.Add("name", data.Name);
+                command.Parameters.Add("email", data.Email);
+                command.Parameters.Add("address", data.Address);
+                command.Parameters.Add("dob", data.DateOfBird);
+                command.Parameters.Add("photo", data.Photo);
+                command.Parameters.Add("jobid", data.JobId);
                 var result = command.ExecuteScalar();
                 if (result != null)
                 {
-                    emp.Id = Convert.ToInt32(result);
+                    data.Id = Convert.ToInt32(result);
                 }
-                return emp;
+                return data;
 
             }
             catch (Exception ex)
@@ -56,22 +56,22 @@ namespace LKSITSSOLUTION.Models
             connection.Open();
             try
             {
-                var cmd = new SqlCommand("select employee.*, job.* from employee inner join job on employee.jobid = job.id ", connection);
+                var cmd = new SqlCommand("select dataloyee.*, job.* from dataloyee inner join job on dataloyee.jobid = job.id ", connection);
                 var reader = cmd.ExecuteReader();
                 List<Employee> list = new List<Employee>();
                 while (reader.Read())
                 {
-                    var employee = new Employee();
-                    employee.Id = reader.GetInt32(0);
-                    employee.UserName = reader.GetString(1);
-                    employee.Name = reader.GetString(3);
-                    employee.Email = reader.GetString(4);
-                    employee.Address = reader.GetString(5);
-                    employee.DateOfBird = reader.GetDateTime(6);
-                    employee.Photo = reader.GetString(7);
-                    employee.JobId = reader.GetInt32(8);
-                    employee.JobName = reader.GetString(10);
-                    list.Add(employee);
+                    var dataloyee = new Employee();
+                    dataloyee.Id = reader.GetInt32(0);
+                    dataloyee.UserName = reader.GetString(1);
+                    dataloyee.Name = reader.GetString(3);
+                    dataloyee.Email = reader.GetString(4);
+                    dataloyee.Address = reader.GetString(5);
+                    dataloyee.DateOfBird = reader.GetDateTime(6);
+                    dataloyee.Photo = reader.GetString(7);
+                    dataloyee.JobId = reader.GetInt32(8);
+                    dataloyee.JobName = reader.GetString(10);
+                    list.Add(dataloyee);
                 }
                 return list;
             }
@@ -85,7 +85,65 @@ namespace LKSITSSOLUTION.Models
             }
         }
 
+        [Obsolete]
+        public static bool Update(Employee data)
+        {
+            var connection = MyConnection.GetConnection();
+            connection.Open();
+            try
+            {
+                var command = new SqlCommand("update employee set username=@usernama, name=@name, email=@email, " +
+                    "address=@address, dateofbird=@dob, jobid=@jobid  photo=@photo where id=@id", connection);
+                command.Parameters.Add("username", data.UserName);
+                command.Parameters.Add("password", data.Password);
+                command.Parameters.Add("name", data.Name);
+                command.Parameters.Add("email", data.Email);
+                command.Parameters.Add("address", data.Address);
+                command.Parameters.Add("dob", data.DateOfBird);
+                command.Parameters.Add("photo", data.Photo);
+                command.Parameters.Add("jobid", data.JobId);
+                var result = command.ExecuteNonQuery();
+                if (result > 0)
+                {
+                    return true;
+                }
+                return false;
+            }
+            catch (Exception ex)
+            {
+                throw new SystemException(ex.Message);
+            }
+            finally
+            {
+                connection.Close();
+            }
+        }
 
+
+        public static bool Delete(int id)
+        {
+            var connection = MyConnection.GetConnection();
+            connection.Open();
+            try
+            {
+                var command = new SqlCommand("delete from employee where id=@id", connection);
+                command.Parameters.Add("id", id);
+                var result = command.ExecuteNonQuery();
+                if (result > 0)
+                {
+                    return true;
+                }
+                return false;
+            }
+            catch (Exception ex)
+            {
+                throw new SystemException(ex.Message);
+            }
+            finally
+            {
+                connection.Close();
+            }
+        }
 
     }
 }
