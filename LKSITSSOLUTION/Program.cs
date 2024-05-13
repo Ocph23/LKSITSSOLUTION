@@ -17,7 +17,7 @@ namespace LKSITSSOLUTION
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FormEmployee());
+            Application.Run(new FormLogin());
         }
     }
 }
