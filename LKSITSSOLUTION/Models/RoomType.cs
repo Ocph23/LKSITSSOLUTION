@@ -10,60 +10,79 @@ namespace LKSITSSOLUTION.Models
     public class RoomType
     {
         public int Id { get; set; }
-        public string Name { get; set; }
-        public int Capacity { get; set; }
-        public double RoomPrice { get; set; }
-        public string Photo { get; set; }
 
+        public string Name { get; set; }
+
+        public int Capacity{ get; set; }
+        public int RoomPrice { get; set; }
+        public string Photo { get;  set; }
 
         public static List<RoomType> GetAll()
         {
+            ///Get All Data RoomType From Database
+            ///
+
+
+            //Connection
             var connection = MyConnection.GetConnection();
             connection.Open();
             try
             {
-                var cmd = new SqlCommand("select * from roomtype", connection);
-                var reader = cmd.ExecuteReader();
+                //Command
+                var command = new SqlCommand("select *  from roomtype", connection);
+                var reader = command.ExecuteReader();
+
+                //mapping data
                 List<RoomType> list = new List<RoomType>();
+
                 while (reader.Read())
                 {
-                    var row = new RoomType();
-                    row.Id = reader.GetInt32(0);
-                    row.Name = reader.GetString(1);
-                    row.Capacity= reader.GetInt32(2);
-                    row.RoomPrice= reader.GetDouble(3);
-                    row.Photo = reader.GetString(4);
-                    list.Add(row);
+                    var data = new RoomType();
+                    data.Id = reader.GetInt32(0);
+                    data.Name = reader.GetString(1);
+                    data.Capacity= reader.GetInt32(2);
+                    data.RoomPrice= reader.GetInt32(3);
+                    data.Photo= reader.GetString(4);
+                    list.Add(data);
                 }
+
                 return list;
+
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw;
+                throw new SystemException(ex.Message);
             }
             finally
             {
                 connection.Close();
             }
+
         }
-        [Obsolete]
-        public static RoomType Insert(RoomType data)
+
+
+        public static RoomType Insert(RoomType model)
         {
+            ///Insert RoomType To Database
+            ///
+
+
+            //Connection
             var connection = MyConnection.GetConnection();
             connection.Open();
             try
             {
-                var command = new SqlCommand("Insert into roomtype values (@name, @capacity, @roomprice, @photo) ; select SCOPE_IDENTITY()", connection);
-                command.Parameters.Add("name", data.Name);
-                command.Parameters.Add("capacity", data.Capacity);
-                command.Parameters.Add("roomprice", data.RoomPrice);
-                command.Parameters.Add("photo", data.Photo);
-                var result = command.ExecuteScalar();
-                if (result != null)
+                //Command
+                var command = new SqlCommand($"insert into roomtype values('{model.Name}', {model.Capacity}, {model.RoomPrice}, '{model.Photo}')", connection);
+                var scalar = command.ExecuteScalar();
+
+
+                //mapping data
+                if (scalar != null)
                 {
-                    data.Id = Convert.ToInt32(result);
+                    model.Id = Convert.ToInt32(scalar);
                 }
-                return data;
+                return model;
 
             }
             catch (Exception ex)
@@ -77,25 +96,27 @@ namespace LKSITSSOLUTION.Models
         }
 
 
-        [Obsolete]
-        public static bool Update(RoomType data)
+        public static bool Update(RoomType model)
         {
+            ///Insert RoomType To Database
+            ///
+
+
+            //Connection
             var connection = MyConnection.GetConnection();
             connection.Open();
             try
             {
-                var command = new SqlCommand("update employee set name=@name, capacity=@capacity, roomprice=@roomprice, photo=@photo where id=@id", connection);
-                command.Parameters.Add("id", data.Id);
-                command.Parameters.Add("name", data.Name);
-                command.Parameters.Add("capacity", data.Capacity);
-                command.Parameters.Add("roomprice", data.RoomPrice);
-                command.Parameters.Add("photo", data.Photo);
+                //Command
+                var command = new SqlCommand($"update roomtype set name={model.Name}, capacity={model.Capacity}, roomprice={model.RoomPrice}) where id = {model.Id}", connection);
                 var result = command.ExecuteNonQuery();
+                //mapping data
                 if (result > 0)
                 {
                     return true;
                 }
                 return false;
+
             }
             catch (Exception ex)
             {
@@ -105,23 +126,32 @@ namespace LKSITSSOLUTION.Models
             {
                 connection.Close();
             }
+
+
         }
 
 
         public static bool Delete(int id)
         {
+            ///Delete RoomType To Database
+            ///
+
+
+            //Connection
             var connection = MyConnection.GetConnection();
             connection.Open();
             try
             {
-                var command = new SqlCommand("delete from roomtype where id=@id", connection);
-                command.Parameters.Add("id", id);
+                //Command
+                var command = new SqlCommand($"delete from roomtype where id={id}", connection);
                 var result = command.ExecuteNonQuery();
+                //mapping data
                 if (result > 0)
                 {
                     return true;
                 }
                 return false;
+
             }
             catch (Exception ex)
             {
@@ -131,6 +161,9 @@ namespace LKSITSSOLUTION.Models
             {
                 connection.Close();
             }
+
+
         }
+
     }
 }

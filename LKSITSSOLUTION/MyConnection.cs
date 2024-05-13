@@ -12,7 +12,6 @@ namespace LKSITSSOLUTION
         public static SqlConnection GetConnection()
         {
             
-           // return new SqlConnection("Data Source=DESKTOP-V7BC4VT\\SQLEXPRESS; Initial Catalog=hotel; integrated security=true");
             return new SqlConnection("Data Source=DESKTOP-JVS72VO\\SQLEXPRESS; Initial Catalog=hoteldb; integrated security=true");
         }
 

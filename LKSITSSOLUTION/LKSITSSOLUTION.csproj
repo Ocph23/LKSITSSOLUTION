@@ -47,50 +47,53 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Admins\FormRoom.cs">
+    <Compile Include="Admin\FormAdmin.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Admins\FormRoom.Designer.cs">
-      <DependentUpon>FormRoom.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Admins\FormRoomType.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Admins\FormRoomType.Designer.cs">
-      <DependentUpon>FormRoomType.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FormAdmin.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormAdmin.Designer.cs">
+    <Compile Include="Admin\FormAdmin.Designer.cs">
       <DependentUpon>FormAdmin.cs</DependentUpon>
     </Compile>
-    <Compile Include="Admins\FormEmployee.cs">
+    <Compile Include="Admin\FormEmployee.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Admins\FormEmployee.Designer.cs">
+    <Compile Include="Admin\FormEmployee.Designer.cs">
       <DependentUpon>FormEmployee.cs</DependentUpon>
     </Compile>
+    <Compile Include="Admin\FormRoom.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Admin\FormRoom.Designer.cs">
+      <DependentUpon>FormRoom.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\FormRoomType.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Admin\FormRoomType.Designer.cs">
+      <DependentUpon>FormRoomType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EncriptPassword.cs" />
     <Compile Include="FormLogin.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FormLogin.Designer.cs">
       <DependentUpon>FormLogin.cs</DependentUpon>
     </Compile>
-    <Compile Include="Models\Employee.cs" />
     <Compile Include="Models\RoomType.cs" />
-    <Compile Include="Models\Job.cs" />
+    <Compile Include="Models\Employee.cs" />
     <Compile Include="MyConnection.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Admins\FormRoomType.resx">
-      <DependentUpon>FormRoomType.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FormAdmin.resx">
+    <EmbeddedResource Include="Admin\FormAdmin.resx">
       <DependentUpon>FormAdmin.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Admins\FormEmployee.resx">
+    <EmbeddedResource Include="Admin\FormEmployee.resx">
       <DependentUpon>FormEmployee.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Admin\FormRoom.resx">
+      <DependentUpon>FormRoom.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Admin\FormRoomType.resx">
+      <DependentUpon>FormRoomType.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormLogin.resx">
       <DependentUpon>FormLogin.cs</DependentUpon>
@@ -125,5 +128,6 @@
   <ItemGroup>
     <None Include="Resources\Multimedia-min-980x980.jpg" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -8,13 +8,18 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace LKSITSSOLUTION.Admins
+namespace LKSITSSOLUTION.Admin
 {
     public partial class FormRoom : Form
     {
         public FormRoom()
         {
             InitializeComponent();
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿namespace LKSITSSOLUTION.Admins
+﻿
+namespace LKSITSSOLUTION.Admin
 {
     partial class FormRoomType
     {
@@ -30,20 +31,21 @@
         {
             this.label1 = new System.Windows.Forms.Label();
             this.tbName = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.tbCapacity = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.RoomPrice = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.btnBrowse = new System.Windows.Forms.Button();
+            this.tbCapacity = new System.Windows.Forms.NumericUpDown();
             this.btnInsert = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.tbPrice = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.btnUpdate = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
+            this.label4 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.button1 = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.tbCapacity)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -52,7 +54,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(29, 29);
+            this.label1.Location = new System.Drawing.Point(26, 29);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(35, 13);
             this.label1.TabIndex = 0;
@@ -60,161 +62,166 @@
             // 
             // tbName
             // 
-            this.tbName.Location = new System.Drawing.Point(163, 26);
+            this.tbName.Location = new System.Drawing.Point(116, 26);
             this.tbName.Multiline = true;
             this.tbName.Name = "tbName";
-            this.tbName.Size = new System.Drawing.Size(228, 32);
+            this.tbName.Size = new System.Drawing.Size(200, 31);
             this.tbName.TabIndex = 1;
+            // 
+            // tbCapacity
+            // 
+            this.tbCapacity.Location = new System.Drawing.Point(116, 76);
+            this.tbCapacity.Name = "tbCapacity";
+            this.tbCapacity.Size = new System.Drawing.Size(120, 20);
+            this.tbCapacity.TabIndex = 2;
+            // 
+            // btnInsert
+            // 
+            this.btnInsert.Location = new System.Drawing.Point(13, 12);
+            this.btnInsert.Name = "btnInsert";
+            this.btnInsert.Size = new System.Drawing.Size(79, 46);
+            this.btnInsert.TabIndex = 3;
+            this.btnInsert.Text = "Insert";
+            this.btnInsert.UseVisualStyleBackColor = true;
+            this.btnInsert.Click += new System.EventHandler(this.btnInsert_Click);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(29, 67);
+            this.label2.Location = new System.Drawing.Point(26, 115);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(48, 13);
+            this.label2.Size = new System.Drawing.Size(62, 13);
             this.label2.TabIndex = 0;
-            this.label2.Text = "Capacity";
+            this.label2.Text = "Room Price";
+            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
-            // tbCapacity
+            // tbPrice
             // 
-            this.tbCapacity.Location = new System.Drawing.Point(163, 64);
-            this.tbCapacity.Multiline = true;
-            this.tbCapacity.Name = "tbCapacity";
-            this.tbCapacity.Size = new System.Drawing.Size(228, 32);
-            this.tbCapacity.TabIndex = 1;
+            this.tbPrice.Location = new System.Drawing.Point(116, 112);
+            this.tbPrice.Multiline = true;
+            this.tbPrice.Name = "tbPrice";
+            this.tbPrice.Size = new System.Drawing.Size(200, 31);
+            this.tbPrice.TabIndex = 1;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(29, 105);
+            this.label3.Location = new System.Drawing.Point(26, 83);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(59, 13);
+            this.label3.Size = new System.Drawing.Size(48, 13);
             this.label3.TabIndex = 0;
-            this.label3.Text = "RoomPrice";
-            // 
-            // RoomPrice
-            // 
-            this.RoomPrice.Location = new System.Drawing.Point(163, 102);
-            this.RoomPrice.Multiline = true;
-            this.RoomPrice.Name = "RoomPrice";
-            this.RoomPrice.Size = new System.Drawing.Size(228, 32);
-            this.RoomPrice.TabIndex = 1;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(29, 143);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(35, 13);
-            this.label4.TabIndex = 0;
-            this.label4.Text = "Photo";
-            // 
-            // btnBrowse
-            // 
-            this.btnBrowse.Location = new System.Drawing.Point(32, 159);
-            this.btnBrowse.Name = "btnBrowse";
-            this.btnBrowse.Size = new System.Drawing.Size(75, 23);
-            this.btnBrowse.TabIndex = 2;
-            this.btnBrowse.Text = "browse";
-            this.btnBrowse.UseVisualStyleBackColor = true;
-            // 
-            // btnInsert
-            // 
-            this.btnInsert.Location = new System.Drawing.Point(12, 14);
-            this.btnInsert.Name = "btnInsert";
-            this.btnInsert.Size = new System.Drawing.Size(75, 40);
-            this.btnInsert.TabIndex = 4;
-            this.btnInsert.Text = "insert";
-            this.btnInsert.UseVisualStyleBackColor = true;
-            this.btnInsert.Click += new System.EventHandler(this.btnInsert_Click);
+            this.label3.Text = "Capacity";
+            this.label3.Click += new System.EventHandler(this.label2_Click);
             // 
             // btnUpdate
             // 
-            this.btnUpdate.Location = new System.Drawing.Point(93, 14);
+            this.btnUpdate.Location = new System.Drawing.Point(98, 12);
             this.btnUpdate.Name = "btnUpdate";
-            this.btnUpdate.Size = new System.Drawing.Size(75, 40);
-            this.btnUpdate.TabIndex = 4;
-            this.btnUpdate.Text = "update";
+            this.btnUpdate.Size = new System.Drawing.Size(79, 46);
+            this.btnUpdate.TabIndex = 3;
+            this.btnUpdate.Text = "Update";
             this.btnUpdate.UseVisualStyleBackColor = true;
             this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
             // btnDelete
             // 
-            this.btnDelete.Location = new System.Drawing.Point(174, 14);
+            this.btnDelete.Location = new System.Drawing.Point(183, 12);
             this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(75, 40);
-            this.btnDelete.TabIndex = 4;
+            this.btnDelete.Size = new System.Drawing.Size(79, 46);
+            this.btnDelete.TabIndex = 3;
             this.btnDelete.Text = "Delete";
             this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(255, 14);
+            this.btnSave.Location = new System.Drawing.Point(268, 12);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(75, 40);
-            this.btnSave.TabIndex = 4;
+            this.btnSave.Size = new System.Drawing.Size(79, 46);
+            this.btnSave.TabIndex = 3;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(336, 14);
+            this.btnCancel.Location = new System.Drawing.Point(353, 12);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(75, 40);
-            this.btnCancel.TabIndex = 4;
+            this.btnCancel.Size = new System.Drawing.Size(79, 46);
+            this.btnCancel.TabIndex = 3;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(26, 169);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(62, 13);
+            this.label4.TabIndex = 4;
+            this.label4.Text = "Room Price";
+            // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.btnDelete);
+            this.panel1.Controls.Add(this.btnInsert);
             this.panel1.Controls.Add(this.btnUpdate);
             this.panel1.Controls.Add(this.btnCancel);
-            this.panel1.Controls.Add(this.btnInsert);
             this.panel1.Controls.Add(this.btnSave);
-            this.panel1.Controls.Add(this.btnDelete);
-            this.panel1.Location = new System.Drawing.Point(32, 482);
+            this.panel1.Location = new System.Drawing.Point(29, 464);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(423, 69);
-            this.panel1.TabIndex = 5;
+            this.panel1.Size = new System.Drawing.Size(452, 73);
+            this.panel1.TabIndex = 6;
             // 
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(32, 315);
+            this.dataGridView1.Location = new System.Drawing.Point(29, 291);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(423, 161);
-            this.dataGridView1.TabIndex = 6;
+            this.dataGridView1.Size = new System.Drawing.Size(452, 150);
+            this.dataGridView1.TabIndex = 7;
             this.dataGridView1.SelectionChanged += new System.EventHandler(this.dataGridView1_SelectionChanged);
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(29, 194);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 8;
+            this.button1.Text = "Browse";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(163, 143);
+            this.pictureBox1.Location = new System.Drawing.Point(116, 169);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(292, 154);
-            this.pictureBox1.TabIndex = 3;
+            this.pictureBox1.Size = new System.Drawing.Size(285, 95);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 5;
             this.pictureBox1.TabStop = false;
             // 
             // FormRoomType
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(492, 573);
+            this.ClientSize = new System.Drawing.Size(501, 583);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.btnBrowse);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.RoomPrice);
-            this.Controls.Add(this.label3);
             this.Controls.Add(this.tbCapacity);
+            this.Controls.Add(this.tbPrice);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.tbName);
             this.Controls.Add(this.label1);
             this.Name = "FormRoomType";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "FormRoomType";
             this.Load += new System.EventHandler(this.FormRoomType_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.tbCapacity)).EndInit();
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -227,19 +234,19 @@
 
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox tbName;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox tbCapacity;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox RoomPrice;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Button btnBrowse;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.NumericUpDown tbCapacity;
         private System.Windows.Forms.Button btnInsert;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox tbPrice;
+        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button btnUpdate;
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Button btnCancel;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Button button1;
     }
 }

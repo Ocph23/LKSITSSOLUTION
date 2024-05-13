@@ -12,72 +12,152 @@ namespace LKSITSSOLUTION.Models
         public int Id { get; set; }
 
         public string UserName { get; set; }
+
         public string Password { get; set; }
-        public string Name { get; set; }
         public string Email { get; set; }
+
+        public string Name { get; set; }
+
         public string Address { get; set; }
         public DateTime DateOfBird { get; set; }
         public string Photo { get; set; }
+
         public int JobId { get; set; }
+
         public string JobName { get; set; }
 
-        [Obsolete]
-        public static Employee Insert(Employee data)
+
+        public static List<Employee> GetAll()
         {
+            ///Get All Data Employee From Database
+            ///
+
+
+            //Connection
+            var connection = MyConnection.GetConnection();
+            connection.Open();
             try
             {
-                var connection = MyConnection.GetConnection();
-                var command = new SqlCommand("Insert into dataloyee values (@username, @password, @name, @email, @address,@dob,@photo, @jobid) ; select SCOPE_IDENTITY()", connection);
-                command.Parameters.Add("username", data.UserName);
-                command.Parameters.Add("password", data.Password);
-                command.Parameters.Add("name", data.Name);
-                command.Parameters.Add("email", data.Email);
-                command.Parameters.Add("address", data.Address);
-                command.Parameters.Add("dob", data.DateOfBird);
-                command.Parameters.Add("photo", data.Photo);
-                command.Parameters.Add("jobid", data.JobId);
-                var result = command.ExecuteScalar();
-                if (result != null)
+                //Command
+                var command = new SqlCommand("select employee.*, job.name from employee left join job on employee.jobid=job.id", connection);
+                var reader = command.ExecuteReader();
+
+                //mapping data
+                List<Employee> list = new List<Employee>();
+
+                while (reader.Read())
                 {
-                    data.Id = Convert.ToInt32(result);
+                    var data = new Employee();
+                    data.Id = reader.GetInt32(0);
+                    data.UserName = reader.GetString(1);
+                    data.Password = reader.GetString(2);
+                    data.Name = reader.GetString(3);
+                    data.Email = reader.GetString(4);
+                    data.Address = reader.GetString(5);
+                    data.DateOfBird = reader.GetDateTime(6);
+                    data.Photo = reader.GetString(7);
+                    data.JobId = reader.GetInt32(8);
+                    data.JobName = reader.GetString(9);
+                    list.Add(data);
                 }
-                return data;
+
+                return list;
 
             }
             catch (Exception ex)
             {
                 throw new SystemException(ex.Message);
             }
+            finally
+            {
+                connection.Close();
+            }
+
         }
 
-        public static List<Employee> GetAll()
+
+        public static Employee Login(string username, string password)
         {
+
+            //Connection
             var connection = MyConnection.GetConnection();
             connection.Open();
             try
             {
-                var cmd = new SqlCommand("select dataloyee.*, job.* from dataloyee inner join job on dataloyee.jobid = job.id ", connection);
-                var reader = cmd.ExecuteReader();
-                List<Employee> list = new List<Employee>();
-                while (reader.Read())
+                //Command
+                var command = new SqlCommand("select employee.*, job.name from employee left join job on employee.jobid=job.id where username=@un and password=@pwd", connection);
+                command.Parameters.Add("un", username);
+                command.Parameters.Add("pwd", password);
+
+                var reader = command.ExecuteReader();
+
+                //mapping data
+
+                if (reader.HasRows)
                 {
-                    var dataloyee = new Employee();
-                    dataloyee.Id = reader.GetInt32(0);
-                    dataloyee.UserName = reader.GetString(1);
-                    dataloyee.Name = reader.GetString(3);
-                    dataloyee.Email = reader.GetString(4);
-                    dataloyee.Address = reader.GetString(5);
-                    dataloyee.DateOfBird = reader.GetDateTime(6);
-                    dataloyee.Photo = reader.GetString(7);
-                    dataloyee.JobId = reader.GetInt32(8);
-                    dataloyee.JobName = reader.GetString(10);
-                    list.Add(dataloyee);
+                    reader.Read();
+                    var data = new Employee();
+                    data.Id = reader.GetInt32(0);
+                    data.UserName = reader.GetString(1);
+                    data.Password = reader.GetString(2);
+                    data.Name = reader.GetString(3);
+                    data.Email = reader.GetString(4);
+                    data.Address = reader.GetString(5);
+                    data.DateOfBird = reader.GetDateTime(6);
+                    data.Photo = reader.GetString(7);
+                    data.JobId = reader.GetInt32(8);
+                    data.JobName = reader.GetString(9);
+                    return data;
+
+                }else
+                {
+                    return null;
                 }
-                return list;
+
+
+
+
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw;
+                    throw new SystemException(ex.Message);
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+        }
+
+
+        public static Employee Insert(Employee model)
+        {
+            ///Insert Employee To Database
+            ///
+
+
+            //Connection
+            var connection = MyConnection.GetConnection();
+            connection.Open();
+            try
+            {
+                //Command
+                var command = new SqlCommand($"insert into employee values({model.UserName}, {model.Password}, {model.Name}, {model.Email}, {model.Address}, " +
+                    $"{model.DateOfBird}, {model.Photo}, {model.JobId}); select scope_identity()", connection);
+                var scalar = command.ExecuteScalar();
+
+
+                //mapping data
+                if (scalar != null)
+                {
+                    model.Id = Convert.ToInt32(scalar);
+                }
+                return model;
+
+            }
+            catch (Exception ex)
+            {
+                throw new SystemException(ex.Message);
             }
             finally
             {
@@ -85,29 +165,29 @@ namespace LKSITSSOLUTION.Models
             }
         }
 
-        [Obsolete]
-        public static bool Update(Employee data)
+
+        public static bool Update(Employee model)
         {
+            ///Insert Employee To Database
+            ///
+
+
+            //Connection
             var connection = MyConnection.GetConnection();
             connection.Open();
             try
             {
-                var command = new SqlCommand("update employee set username=@usernama, name=@name, email=@email, " +
-                    "address=@address, dateofbird=@dob, jobid=@jobid  photo=@photo where id=@id", connection);
-                command.Parameters.Add("username", data.UserName);
-                command.Parameters.Add("password", data.Password);
-                command.Parameters.Add("name", data.Name);
-                command.Parameters.Add("email", data.Email);
-                command.Parameters.Add("address", data.Address);
-                command.Parameters.Add("dob", data.DateOfBird);
-                command.Parameters.Add("photo", data.Photo);
-                command.Parameters.Add("jobid", data.JobId);
+                //Command
+                var command = new SqlCommand($"update employee set username={model.UserName}, password={model.Password}, name={model.Name},email= {model.Email}, address={model.Address}, " +
+                    $"date0fbird={model.DateOfBird}, photo={model.Photo},jobid={model.JobId}) where id = {model.Id}", connection);
                 var result = command.ExecuteNonQuery();
+                //mapping data
                 if (result > 0)
                 {
                     return true;
                 }
                 return false;
+
             }
             catch (Exception ex)
             {
@@ -117,23 +197,32 @@ namespace LKSITSSOLUTION.Models
             {
                 connection.Close();
             }
+
+
         }
 
 
         public static bool Delete(int id)
         {
+            ///Delete Employee To Database
+            ///
+
+
+            //Connection
             var connection = MyConnection.GetConnection();
             connection.Open();
             try
             {
-                var command = new SqlCommand("delete from employee where id=@id", connection);
-                command.Parameters.Add("id", id);
+                //Command
+                var command = new SqlCommand($"delete from employee where id={id}", connection);
                 var result = command.ExecuteNonQuery();
+                //mapping data
                 if (result > 0)
                 {
                     return true;
                 }
                 return false;
+
             }
             catch (Exception ex)
             {
@@ -143,6 +232,8 @@ namespace LKSITSSOLUTION.Models
             {
                 connection.Close();
             }
+
+
         }
 
     }
