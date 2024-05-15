@@ -15,14 +15,20 @@ namespace LKSITSSOLUTION.Admin
     {
 
 
-        public BindingList<RoomType> source { get; set; }
+        public BindingList<RoomType> sourceFromDatabase { get; set; }
+        public BindingList<RoomType> source { get; set; } = new BindingList<RoomType>();
 
         private RoomType model;
 
         public FormRoomType()
         {
             InitializeComponent();
-            source = new BindingList<RoomType>(RoomType.GetAll());
+            sourceFromDatabase = new BindingList<RoomType>(RoomType.GetAll());
+            foreach (var item in sourceFromDatabase)
+            {
+                source.Add(item);
+            }
+
             dataGridView1.DataSource = source;
         }
 
@@ -40,7 +46,10 @@ namespace LKSITSSOLUTION.Admin
 
         private void dataGridView1_SelectionChanged(object sender, EventArgs e)
         {
+            if (dataGridView1.CurrentRow == null)
+                return;
             var data = dataGridView1.CurrentRow.DataBoundItem as RoomType;
+        
             tbName.Text = data.Name;
             tbCapacity.Value = data.Capacity;
             tbPrice.Text = data.RoomPrice.ToString();
@@ -220,9 +229,29 @@ namespace LKSITSSOLUTION.Admin
             var dialog = new OpenFileDialog();
             if(dialog.ShowDialog() == DialogResult.OK)
             {
-                var fileName = dialog.FileName;
-                pictureBox1.Load(fileName);
+                pictureBox1.Load(dialog.FileName);
+            }
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void search_TextChanged(object sender, EventArgs e)
+        {
+            var tb = sender as TextBox;
+            if (!string.IsNullOrEmpty(tb.Text))
+            {
+                var result = sourceFromDatabase.Where(x => x.Name.ToLower().Contains(tb.Text.ToLower()));
+                source.Clear();
+                foreach (var item in result)
+                {
+                    source.Add(item);
+                }
+                dataGridView1.Refresh();
             }
         }
     }
 }
+

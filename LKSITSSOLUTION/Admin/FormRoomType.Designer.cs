@@ -45,6 +45,7 @@ namespace LKSITSSOLUTION.Admin
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.button1 = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.search = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.tbCapacity)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -54,23 +55,24 @@ namespace LKSITSSOLUTION.Admin
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(26, 29);
+            this.label1.Location = new System.Drawing.Point(42, 120);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(35, 13);
             this.label1.TabIndex = 0;
             this.label1.Text = "Name";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // tbName
             // 
-            this.tbName.Location = new System.Drawing.Point(116, 26);
+            this.tbName.Location = new System.Drawing.Point(132, 117);
             this.tbName.Multiline = true;
             this.tbName.Name = "tbName";
-            this.tbName.Size = new System.Drawing.Size(200, 31);
+            this.tbName.Size = new System.Drawing.Size(285, 31);
             this.tbName.TabIndex = 1;
             // 
             // tbCapacity
             // 
-            this.tbCapacity.Location = new System.Drawing.Point(116, 76);
+            this.tbCapacity.Location = new System.Drawing.Point(132, 167);
             this.tbCapacity.Name = "tbCapacity";
             this.tbCapacity.Size = new System.Drawing.Size(120, 20);
             this.tbCapacity.TabIndex = 2;
@@ -88,7 +90,7 @@ namespace LKSITSSOLUTION.Admin
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(26, 115);
+            this.label2.Location = new System.Drawing.Point(42, 206);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(62, 13);
             this.label2.TabIndex = 0;
@@ -97,7 +99,7 @@ namespace LKSITSSOLUTION.Admin
             // 
             // tbPrice
             // 
-            this.tbPrice.Location = new System.Drawing.Point(116, 112);
+            this.tbPrice.Location = new System.Drawing.Point(132, 203);
             this.tbPrice.Multiline = true;
             this.tbPrice.Name = "tbPrice";
             this.tbPrice.Size = new System.Drawing.Size(200, 31);
@@ -106,7 +108,7 @@ namespace LKSITSSOLUTION.Admin
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(26, 83);
+            this.label3.Location = new System.Drawing.Point(42, 174);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(48, 13);
             this.label3.TabIndex = 0;
@@ -156,7 +158,7 @@ namespace LKSITSSOLUTION.Admin
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(26, 169);
+            this.label4.Location = new System.Drawing.Point(42, 260);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(62, 13);
             this.label4.TabIndex = 4;
@@ -169,7 +171,7 @@ namespace LKSITSSOLUTION.Admin
             this.panel1.Controls.Add(this.btnUpdate);
             this.panel1.Controls.Add(this.btnCancel);
             this.panel1.Controls.Add(this.btnSave);
-            this.panel1.Location = new System.Drawing.Point(29, 464);
+            this.panel1.Location = new System.Drawing.Point(45, 555);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(452, 73);
             this.panel1.TabIndex = 6;
@@ -177,7 +179,7 @@ namespace LKSITSSOLUTION.Admin
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(29, 291);
+            this.dataGridView1.Location = new System.Drawing.Point(45, 382);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(452, 150);
             this.dataGridView1.TabIndex = 7;
@@ -185,7 +187,7 @@ namespace LKSITSSOLUTION.Admin
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(29, 194);
+            this.button1.Location = new System.Drawing.Point(45, 285);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 8;
@@ -195,18 +197,28 @@ namespace LKSITSSOLUTION.Admin
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(116, 169);
+            this.pictureBox1.Location = new System.Drawing.Point(132, 260);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(285, 95);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 5;
             this.pictureBox1.TabStop = false;
             // 
+            // search
+            // 
+            this.search.Location = new System.Drawing.Point(132, 37);
+            this.search.Multiline = true;
+            this.search.Name = "search";
+            this.search.Size = new System.Drawing.Size(285, 31);
+            this.search.TabIndex = 9;
+            this.search.TextChanged += new System.EventHandler(this.search_TextChanged);
+            // 
             // FormRoomType
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(501, 583);
+            this.ClientSize = new System.Drawing.Size(544, 658);
+            this.Controls.Add(this.search);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.panel1);
@@ -248,5 +260,6 @@ namespace LKSITSSOLUTION.Admin
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.TextBox search;
     }
 }

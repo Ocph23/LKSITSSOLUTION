@@ -78,6 +78,7 @@
     <Compile Include="FormLogin.Designer.cs">
       <DependentUpon>FormLogin.cs</DependentUpon>
     </Compile>
+    <Compile Include="Models\Job.cs" />
     <Compile Include="Models\RoomType.cs" />
     <Compile Include="Models\Employee.cs" />
     <Compile Include="MyConnection.cs" />
@@ -128,6 +129,14 @@
   <ItemGroup>
     <None Include="Resources\Multimedia-min-980x980.jpg" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Resources\remove.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\above.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\michael-dam-mEZ3PoFGs_k-unsplash.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

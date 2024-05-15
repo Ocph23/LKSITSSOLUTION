@@ -26,6 +26,7 @@ namespace LKSITSSOLUTION.Admin
         private void roomTypeToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var form = new Admin.FormRoomType();
+            form.ShowDialog();
         }
     }
 }

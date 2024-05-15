@@ -36,6 +36,8 @@ namespace LKSITSSOLUTION.Admin
             this.btnUpdate = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
+            this.cmbRoomType = new System.Windows.Forms.ComboBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -72,11 +74,14 @@ namespace LKSITSSOLUTION.Admin
             // 
             // btnInsert
             // 
+            this.btnInsert.Image = global::LKSITSSOLUTION.Properties.Resources.above;
+            this.btnInsert.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnInsert.Location = new System.Drawing.Point(13, 12);
             this.btnInsert.Name = "btnInsert";
             this.btnInsert.Size = new System.Drawing.Size(79, 46);
             this.btnInsert.TabIndex = 3;
             this.btnInsert.Text = "Insert";
+            this.btnInsert.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnInsert.UseVisualStyleBackColor = true;
             this.btnInsert.Click += new System.EventHandler(this.btnInsert_Click);
             // 
@@ -107,12 +112,33 @@ namespace LKSITSSOLUTION.Admin
             this.btnSave.TabIndex = 3;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            // 
+            // cmbRoomType
+            // 
+            this.cmbRoomType.DisplayMember = "Name";
+            this.cmbRoomType.FormattingEnabled = true;
+            this.cmbRoomType.Location = new System.Drawing.Point(98, 227);
+            this.cmbRoomType.Name = "cmbRoomType";
+            this.cmbRoomType.Size = new System.Drawing.Size(250, 21);
+            this.cmbRoomType.TabIndex = 8;
+            this.cmbRoomType.ValueMember = "Id";
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(98, 46);
+            this.textBox1.Multiline = true;
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(250, 20);
+            this.textBox1.TabIndex = 9;
             // 
             // FormEmployee
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(570, 526);
+            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.cmbRoomType);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.dataGridView1);
             this.Name = "FormEmployee";
@@ -121,6 +147,7 @@ namespace LKSITSSOLUTION.Admin
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -133,5 +160,7 @@ namespace LKSITSSOLUTION.Admin
         private System.Windows.Forms.Button btnUpdate;
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.Button btnSave;
+        private System.Windows.Forms.ComboBox cmbRoomType;
+        private System.Windows.Forms.TextBox textBox1;
     }
 }

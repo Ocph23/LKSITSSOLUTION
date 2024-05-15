@@ -63,6 +63,16 @@ namespace LKSITSSOLUTION.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap above {
+            get {
+                object obj = ResourceManager.GetObject("above", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap il_1140xN_5543409541_fmkc {
             get {
                 object obj = ResourceManager.GetObject("il_1140xN.5543409541_fmkc", resourceCulture);
@@ -73,9 +83,29 @@ namespace LKSITSSOLUTION.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap michael_dam_mEZ3PoFGs_k_unsplash {
+            get {
+                object obj = ResourceManager.GetObject("michael-dam-mEZ3PoFGs_k-unsplash", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Multimedia_min_980x980 {
             get {
                 object obj = ResourceManager.GetObject("Multimedia-min-980x980", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap remove {
+            get {
+                object obj = ResourceManager.GetObject("remove", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

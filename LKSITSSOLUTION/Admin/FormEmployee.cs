@@ -22,6 +22,11 @@ namespace LKSITSSOLUTION.Admin
             InitializeComponent();
             source = new BindingList<Employee>(Employee.GetAll());
             dataGridView1.DataSource = source;
+
+            cmbRoomType.DataSource = Job.GetAll();
+
+
+
         }
 
         private void FormEmployee_Load(object sender, EventArgs e)
@@ -161,5 +166,10 @@ namespace LKSITSSOLUTION.Admin
             }
         }
 
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            var roomType = cmbRoomType.SelectedItem as RoomType;
+            model.JobId = roomType.Id;
+        }
     }
 }
