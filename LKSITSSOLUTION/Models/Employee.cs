@@ -113,10 +113,6 @@ namespace LKSITSSOLUTION.Models
                 {
                     return null;
                 }
-
-
-
-
             }
             catch (Exception ex)
             {

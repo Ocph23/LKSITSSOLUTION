@@ -38,7 +38,7 @@ namespace LKSITSSOLUTION
             }
             catch (Exception ex)
             {
-                throw;
+                MessageBox.Show(ex.Message);
             }
         }
 
